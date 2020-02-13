@@ -1,7 +1,7 @@
 <?php
 
 require( __DIR__ . '/core/functions/store.php' );
-require( __DIR__ . '/core/functions/conection.php' );
+require( __DIR__ . '/core/functions/connection.php' );
 
 $conection = new Connection();
 
