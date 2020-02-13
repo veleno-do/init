@@ -2,7 +2,7 @@
 require( __DIR__ . '\properties.php' );
 
 class Store{
-    private $dbh;
+    public $dbh;
 
     public function __construct()
     {
@@ -28,13 +28,13 @@ class Store{
         }
     }
 
-    public function login( $name, $password )
+    public static function login( $name, $password )
     {
         try
         {
             $query = "SELECT * FROM users WHERE user_name = :name";
 
-            $stmt = $this->dbh->prepare( $query );
+            $stmt = self::$dbh->prepare( $query );
 
             $stmt->execute( array( ':name' => $name ) );
 
@@ -61,17 +61,18 @@ class Store{
         }
     }
 
-    public function create( $name, $password )
+    public static function generate( $name, $password )
     {
         try
         {
+            $id = uniqid( '', TRUE );
             $password = password_hash( $password, PASSWORD_DEFAULT );
     
-            $query = "INSERT INTO users ( user_name, user_password ) VALUES ( :name, :password )";
+            $query = "INSERT INTO users ( user_id, user_name, user_password ) VALUES ( :id, :name, :password )";
     
-            $stmt = $this->dbh->prepare( $query );
+            $stmt = self::$dbh->prepare( $query );
     
-            $stmt->execute( array( ':name' => $name, ':password' => $password ) );
+            $stmt->execute( array( ':id' => $id, ':name' => $name, ':password' => $password ) );
         }
         catch( Exception $e )
         {

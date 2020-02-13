@@ -7,7 +7,7 @@ $password;
 
 if( $_SERVER['REQUEST_METHOD'] === 'POST' )
 {
-    if( isset( $_POST[ 'create' ] ) )
+    if( isset( $_POST[ 'generate' ] ) )
     {
         $name = $_POST[ 'user_name' ];
         $password = $_POST[ 'user_password' ];
@@ -15,9 +15,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' )
         $name = htmlspecialchars( $name );
         $password = htmlspecialchars( $password );
 
-        $data = new Store();
-
-        $data->create( $name, $password );
+        Store::generate( $name, $password );
     }
 
     if( isset( $_POST[ 'login' ] ) )
@@ -25,16 +23,15 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' )
         $name = $_POST[ 'name' ];
         $password = $_POST[ 'password' ];
 
-        $data = new Store();
         $session = Session::getInstance();
 
-        $id = $data->login( $name, $password );
+        $id = Store::login( $name, $password );
 
         if( $id )
         {
             try
             {
-                $session->__set( 'id', $id );
+                $session->id = $id;
             }
             catch( Exception $e )
             {

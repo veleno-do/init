@@ -1,10 +1,10 @@
 <?php
 
-require( __DIR__ . '/core/functions//store.php' );
-require( __DIR__ . '/core/functions\session.php' );
+require( __DIR__ . '/core/functions/store.php' );
+require( __DIR__ . '/core/functions/conection.php' );
 
-$data = new Store();
-echo isset( $_SESSION[ 'id' ] );
+$conection = new Connection();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ echo isset( $_SESSION[ 'id' ] );
     <form action="./core/formAction.php" method="POST">
         <input type="text" name="user_name" required autocomplete="off">
         <input type="password" name="user_password" required>
-        <input type="submit" name="create">
+        <input type="submit" name="generate">
     </form>
 </body>
 </html>
