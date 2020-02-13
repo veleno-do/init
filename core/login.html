@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login - Task management</title>
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body class="login">
+    <div class="container">
+        <div class="body">
+            <div class="l-main">
+                <div class="main__breadcrumb">
+                    <span class="main__breadcrumb-head">Login</span>
+                </div>
+                <section class="main__login">
+                    <h2 class="main__login-title"><a href="javascript:void(0)" target="_self">Task management</a></h2>
+                    <h3 class="main__login-subtitle">login</h3>
+                    <form class="main__login-form" action="./formAction.php" method="POST" name="login">
+                        <p class="main__login-err">ERR: </p>
+                        <label class="main__login-elem" for="name">
+                            <p>user name</p><br>
+                            <input class="main__login-input" id="name" type="text" name="name" autocomplete="off" required>
+                        </label>
+                        <label class="main__login-elem" for="password">
+                            <p>password</p><br>
+                            <input class="main__login-input" id="password" type="password" name="password" required>
+                        </label>
+                        <label for="login">
+                            <p>Send</p>
+                            <input type="submit" name="login" value="Send" id="login">
+                        </label>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
